@@ -112,6 +112,7 @@ function expects to be wrapped in a with-state for win."
 (defun unmap-message-window (screen)
   "Unmap the screen's message window, if it is mapped."
   (unless (eq (xlib:window-map-state (screen-message-window screen)) :unmapped)
+    (run-hook *message-hide-hook*)
     (xlib:unmap-window (screen-message-window screen))))
 
 (defun unmap-all-message-windows ()

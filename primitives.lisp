@@ -54,6 +54,7 @@
           *split-frame-hook*
           *remove-split-hook*
           *message-hook*
+          *message-hide-hook*
           *top-level-error-hook*
           *focus-group-hook*
           *key-press-hook*
@@ -319,6 +320,10 @@ the current frame and removed frame as arguments.")
   "A hook called whenever stumpwm displays a message. The hook
 function is passed any number of arguments. Each argument is a
 line of text.")
+
+(defvar *message-hide-hook* '()
+  "A hook called whenever stumpwm hides a message. The hook
+function is passed no arguments.")
 
 (defvar *top-level-error-hook* '()
   "Called when a top level error occurs. Note that this hook is
