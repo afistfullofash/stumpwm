@@ -873,7 +873,10 @@ chosen, resignal the error."
             (dolist (fn hook)
               (with-simple-restart (continue-hooks "Continue running the remaining hooks.")
                 (apply fn args)))))
-      (t (c) (message "^B^1*Error on hook ^b~S^B!~% ^n~A" hook c) (values nil c)))))
+      (t (c)
+         (let ((*hooks-enabled-p* nil))
+           (message "^B^1*Error on hook ^b~S^B!~% ^n~A" hook c))
+         (values nil c)))))
 
 (defun run-hook (hook)
   "Call each function in HOOK."
